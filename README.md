@@ -1,6 +1,16 @@
 # TaxonomyBreadcrumb
 
-Generates a breadcrumb of field values, useful for specifying hierarchy between field values. 
+Generates all permutations of breadcrumbs for specified field values, useful when needing to specify a hierarchy between those values.
+
+For example, using the following fields
+- @level1 = ['a', 'b']
+- @level2 = ['c', 'd']
+
+Along with the default separator will generate the following breadcrumbs:
+- a>c
+- a>d
+- b>c
+- b>d
 
 Disclaimer: This component was built by the community at large and is not an official Coveo JSUI Component. Use this component at your own risk.
 

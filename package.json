@@ -1,7 +1,7 @@
 {
     "name": "@coveops/taxonomy-breadcrumb",
     "version": "1.0.0",
-    "description": "Generates a breadcrumb of field values, useful for specifying hierarchy between field values. ",
+    "description": "Generates all permutations of breadcrumbs for specified field values, useful when needing to specify a hierarchy between those values.",
     "main": "dist/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
