@@ -1,0 +1,25 @@
+{
+    "name": "@coveops/taxonomy-breadcrumb",
+    "version": "1.0.0",
+    "description": "Generates a breadcrumb of field values, useful for specifying hierarchy between field values. ",
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "coveops build TaxonomyBreadcrumb --template typescript",
+        "serve": "coveops serve",
+        "precompile": "npm run build"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@coveops/turbo-core": "^1.1.1",
+        "coveo-search-ui": "^2.9373.8"
+    },
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "devDependencies": {
+        "@coveops/cli": "^0.9.0"
+    }
+}
