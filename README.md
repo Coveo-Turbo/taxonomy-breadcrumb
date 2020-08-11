@@ -2,6 +2,8 @@
 
 Generates all permutations of breadcrumbs for specified field values, useful when needing to specify a hierarchy between those values.
 
+This component handles both single and multi-value fields.
+
 For example, using the following fields
 - @level1 = ['a', 'b']
 - @level2 = ['c', 'd']
