@@ -14,7 +14,7 @@ build:
 	npm run build
 
 serve:
-	.\node_modules\.bin\coveops serve \
+	npx @coveops/cli serve
 		--org-id $(COVEO_ORG_ID) \
 		--token $(COVEO_TOKEN) \
 		--port $(SERVER_PORT)

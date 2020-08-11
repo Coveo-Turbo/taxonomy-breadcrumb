@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.8864/css/CoveoFullSearchNewDesign.css" />
     <link rel="stylesheet" href="component.css" />
 
+    <script src="init.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {    
-            Coveo.SearchEndpoint.configureCloudV2Endpoint(demoConfig.orgId, demoConfig.token, demoConfig.restUri);
             // Coveo.SearchEndpoint.endpoints['default'].options.queryStringArguments.viewAllContent = 'true';
             Coveo.init(document.getElementById('search'), {
                 Analytics: {
