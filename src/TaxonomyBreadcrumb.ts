@@ -47,10 +47,21 @@ export class TaxonomyBreadcrumb extends Component {
         
         this.options.fields.forEach( (field) => {
             let fieldValue = Coveo.Utils.getFieldValue(this.result, field as string);
-            taxonomies.push(fieldValue);
+            if (fieldValue) {
+                // Handle case where field is single-valued
+                if (typeof fieldValue == "string") {
+                    taxonomies.push([fieldValue]);
+                // Handle case where field is multi-valued
+                } else {
+                    taxonomies.push(fieldValue);
+                }
+            }
+            
         });
 
-        this.recursiveHelper(taxonomies, [], 0, maxDepth);
+        if (taxonomies.length > 0) {
+            this.recursiveHelper(taxonomies, [], 0, maxDepth);
+        }
     }
 
     protected recursiveHelper(taxonomies, subArray, curDepth, maxDepth) {
