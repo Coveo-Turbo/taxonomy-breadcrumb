@@ -56,7 +56,6 @@ export class TaxonomyBreadcrumb extends Component {
                     taxonomies.push(fieldValue);
                 }
             }
-            
         });
 
         if (taxonomies.length > 0) {
@@ -66,7 +65,7 @@ export class TaxonomyBreadcrumb extends Component {
 
     protected recursiveHelper(taxonomies, subArray, curDepth, maxDepth) {
         // Only adds permutations of length maxDepth
-        if (curDepth == maxDepth || taxonomies[curDepth].length == 0) {
+        if (curDepth == maxDepth || !(taxonomies[curDepth]) || taxonomies[curDepth].length == 0) {
             this.breadcrumbs.push(subArray.join(this.options.separator));
             return;
         };
