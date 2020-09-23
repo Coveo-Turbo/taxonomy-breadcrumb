@@ -1,14 +1,16 @@
 # TaxonomyBreadcrumb
 
-Generates all permutations of breadcrumbs for specified field values, useful when needing to specify a hierarchy between those values.
+Generates the appropriate permutation of breadcrumbs based on the specified field values, useful when needing to specify a hierarchy between those values.
 
-This component handles both single and multi-value fields.
+This component is a result template component (see [Result Templates](https://docs.coveo.com/en/413/)).
+
+This component handles both single- and multi-value fields.
 
 For example, using the following fields
 - @level1 = ['a', 'b']
 - @level2 = ['c', 'd']
 
-Along with the default separator will generate the following breadcrumbs:
+along with the default separator will generate one of the following breadcrumbs, depending on the values of the specified fields:
 - a>c
 - a>d
 - b>c
@@ -18,33 +20,9 @@ Disclaimer: This component was built by the community at large and is not an off
 
 ## Getting Started
 
-1. Install the component into your project.
+### Testing the Component
 
-```
-npm i @coveops/taxonomy-breadcrumb
-```
-
-2. Use the Component or extend it
-
-Typescript:
-
-```javascript
-import { TaxonomyBreadcrumb, ITaxonomyBreadcrumbOptions } from '@coveops/taxonomy-breadcrumb';
-```
-
-Javascript
-
-```javascript
-const TaxonomyBreadcrumb = require('@coveops/taxonomy-breadcrumb').TaxonomyBreadcrumb;
-```
-
-3. You can also expose the component alongside other components being built in your project.
-
-```javascript
-export * from '@coveops/taxonomy-breadcrumb'
-```
-
-4. Or for quick testing, you can add the script from unpkg
+For quick testing, you can add the script from unpkg:
 
 ```html
 <script src="https://unpkg.com/@coveops/taxonomy-breadcrumb@latest/dist/index.min.js"></script>
@@ -52,13 +30,49 @@ export * from '@coveops/taxonomy-breadcrumb'
 
 > Disclaimer: Unpkg should be used for testing but not for production.
 
-5. Include the component in your template as follows:
+### Using the Component
 
-Place the component in your markup:
+1. Install the component into your project.
 
-```html
-<div class="CoveoTaxonomyBreadcrumb"></div>
-```
+    ```
+    npm i @coveops/taxonomy-breadcrumb
+    ```
+
+2. Use the Component or extend it:
+
+    Typescript
+
+    ```javascript
+    import { TaxonomyBreadcrumb, ITaxonomyBreadcrumbOptions } from '@coveops/taxonomy-breadcrumb';
+    ```
+
+    Javascript
+
+    ```javascript
+    const TaxonomyBreadcrumb = require('@coveops/taxonomy-breadcrumb').TaxonomyBreadcrumb;
+    ```
+
+3. You can also expose the component alongside other components being built in your project.
+
+    ```javascript
+    export * from '@coveops/taxonomy-breadcrumb'
+    ```
+
+4. Include the component in your template as follows:
+
+    Place the component in your markup:
+
+    ```html
+    <div class="CoveoTaxonomyBreadcrumb" data-fields="@field1,@field2"></div>
+    ```
+## Options
+
+The following options can be configured:
+
+| Option | Required | Type | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `fields` | Yes | IFieldOption[ ] | | The field(s) used to create the breadcrumb |
+| `separator` | No | string | `>` | The separator inserted between field values in the breadcrumb |
 
 ## Extending
 
