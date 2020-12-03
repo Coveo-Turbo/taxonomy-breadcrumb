@@ -4,13 +4,13 @@ Generates the appropriate permutation of breadcrumbs based on the specified fiel
 
 This component is a result template component (see [Result Templates](https://docs.coveo.com/en/413/)).
 
-This component handles both single- and multi-value fields.
+This component handles both single and multi-value fields.
 
 For example, using the following fields
 - @level1 = ['a', 'b']
 - @level2 = ['c', 'd']
 
-along with the default separator will generate one of the following breadcrumbs, depending on the values of the specified fields:
+along with the default separator will generate the following breadcrumbs based on the values of the specified fields:
 - a>c
 - a>d
 - b>c
