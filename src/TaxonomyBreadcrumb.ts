@@ -1,25 +1,27 @@
-import { 
-    Component, 
-    IComponentBindings, 
+import {
+    Component,
+    IComponentBindings,
     ComponentOptions,
     IFieldOption,
     IQueryResult,
     $$
-} 
-from 'coveo-search-ui';
+}
+    from 'coveo-search-ui';
 import { lazyComponent } from '@coveops/turbo-core';
 
 export interface ITaxonomyBreadcrumbOptions {
     fields: IFieldOption[];
     separator: string;
+    label: string;
 }
 
 @lazyComponent
 export class TaxonomyBreadcrumb extends Component {
     static ID = 'TaxonomyBreadcrumb';
     static options: ITaxonomyBreadcrumbOptions = {
-        fields: ComponentOptions.buildListOption<IFieldOption>({defaultValue: []}),
-        separator: ComponentOptions.buildStringOption({defaultValue: '>'}),
+        fields: ComponentOptions.buildListOption<IFieldOption>({ defaultValue: [] }),
+        separator: ComponentOptions.buildStringOption({ defaultValue: '>' }),
+        label: ComponentOptions.buildStringOption({ defaultValue: '' }),
     };
     breadcrumbs: string[];
 
@@ -44,14 +46,14 @@ export class TaxonomyBreadcrumb extends Component {
         const maxDepth = this.options.fields.length;
         let taxonomies = [];
         this.breadcrumbs = [];
-        
-        this.options.fields.forEach( (field) => {
+
+        this.options.fields.forEach((field) => {
             let fieldValue = Coveo.Utils.getFieldValue(this.result, field as string);
             if (fieldValue) {
                 // Handle case where field is single-valued
                 if (typeof fieldValue == "string") {
                     taxonomies.push([fieldValue]);
-                // Handle case where field is multi-valued
+                    // Handle case where field is multi-valued
                 } else {
                     taxonomies.push(fieldValue);
                 }
@@ -66,7 +68,8 @@ export class TaxonomyBreadcrumb extends Component {
     protected recursiveHelper(taxonomies, subArray, curDepth, maxDepth) {
         // Only adds permutations of length maxDepth
         if (curDepth == maxDepth || !(taxonomies[curDepth]) || taxonomies[curDepth].length == 0) {
-            this.breadcrumbs.push(subArray.join(this.options.separator));
+            const subArrayString = (`<span class="taxonomy-breadcrumb-label">${this.options.label}</span> ${subArray.join(this.options.separator)}`).trim();
+            this.breadcrumbs.push(subArrayString);
             return;
         };
 
@@ -76,17 +79,17 @@ export class TaxonomyBreadcrumb extends Component {
 
         // Branches out i times equal to the length of the current array
         for (let i = 0; i < copiedTaxonomies[curDepth].length; i++) {
-            let copiedSubArray = subArray.slice(); 
+            let copiedSubArray = subArray.slice();
             const curElement = copiedTaxonomies[curDepth][i]
             copiedSubArray.push(curElement);
 
             // Call the next recursion layer, adding 1 to depth
-            this.recursiveHelper(copiedTaxonomies, copiedSubArray, curDepth+1, maxDepth);
-        }        
+            this.recursiveHelper(copiedTaxonomies, copiedSubArray, curDepth + 1, maxDepth);
+        }
     }
 
     protected renderBreadcrumbs() {
-        this.breadcrumbs.forEach( (breadcrumb) => {
+        this.breadcrumbs.forEach((breadcrumb) => {
             const breadcrumbElement = $$('div', { className: 'breadcrumb' }, breadcrumb).el;
             $$(this.element).append(breadcrumbElement);
         })

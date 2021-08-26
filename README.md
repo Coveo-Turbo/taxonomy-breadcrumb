@@ -73,6 +73,7 @@ The following options can be configured:
 | --- | --- | --- | --- | --- |
 | `fields` | Yes | IFieldOption[ ] | | The field(s) used to create the breadcrumb |
 | `separator` | No | string | `>` | The separator inserted between field values in the breadcrumb |
+| `label` | No | string | empty string | This label is inserted in front of the breadcrumb. Can be styled using the `.taxonomy-breadcrumb-label` CSS class. |
 
 ## Extending
 

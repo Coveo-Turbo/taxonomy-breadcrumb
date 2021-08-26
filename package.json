@@ -1,6 +1,6 @@
 {
     "name": "@coveops/taxonomy-breadcrumb",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Generates all permutations of breadcrumbs for specified field values, useful when needing to specify a hierarchy between those values.",
     "main": "dist/index.js",
     "scripts": {
@@ -12,14 +12,14 @@
     "author": "",
     "license": "Apache-2.0",
     "dependencies": {
-        "@coveops/turbo-core": "^1.1.1",
-        "coveo-search-ui": "^2.9373.8"
+        "@coveops/turbo-core": "^1.2.1",
+        "coveo-search-ui": "^2.10089.0"
     },
     "types": "dist/index.d.ts",
     "files": [
         "dist"
     ],
     "devDependencies": {
-        "@coveops/cli": "^0.10.1"
+        "@coveops/cli": "^0.17.0"
     }
 }

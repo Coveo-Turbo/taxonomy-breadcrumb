@@ -5,7 +5,7 @@ export
 default:	| setup build
 
 init:
-	cp .env .env.dist
+	cp .env.dist .env
 
 setup:
 	npm install
@@ -14,7 +14,7 @@ build:
 	npm run build
 
 serve:
-	npx @coveops/cli serve
+	./node_modules/.bin/coveops serve \
 		--org-id $(COVEO_ORG_ID) \
 		--token $(COVEO_TOKEN) \
 		--port $(SERVER_PORT)
